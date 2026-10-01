@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://b4l2ucvwt3p3c"]
+
+[ext_resource type="Script" path="res://app/graph_nodes/queue_info_window.gd" id="1_queue_info"]
+
+[node name="InfoWindow" type="Window" unique_id=112158056]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+size = Vector2i(380, 380)
+min_size = Vector2i(340, 320)
+script = ExtResource("1_queue_info")
+
+[node name="Label" type="Label" parent="." unique_id=256502874]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Queue length: 0"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2001]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2002]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HeaderLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2003]
+layout_mode = 2
+text = "Queue Buffer Inspector"
+
+[node name="MetricsCard" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=2004]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MetricsCard" unique_id=2005]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/MetricsCard/VBoxContainer" unique_id=2006]
+layout_mode = 2
+columns = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 4
+
+[node name="CountTitle" type="Label" parent="MarginContainer/VBoxContainer/MetricsCard/VBoxContainer/GridContainer" unique_id=2007]
+layout_mode = 2
+text = "Current Occupancy:"
+
+[node name="CountValue" type="Label" parent="MarginContainer/VBoxContainer/MetricsCard/VBoxContainer/GridContainer" unique_id=2008]
+layout_mode = 2
+text = "0 items"
+
+[node name="PeakTitle" type="Label" parent="MarginContainer/VBoxContainer/MetricsCard/VBoxContainer/GridContainer" unique_id=2009]
+layout_mode = 2
+text = "Peak Queue Length:"
+
+[node name="PeakValue" type="Label" parent="MarginContainer/VBoxContainer/MetricsCard/VBoxContainer/GridContainer" unique_id=2010]
+layout_mode = 2
+text = "0"
+
+[node name="EnqueuedTitle" type="Label" parent="MarginContainer/VBoxContainer/MetricsCard/VBoxContainer/GridContainer" unique_id=2011]
+layout_mode = 2
+text = "Total Enqueued:"
+
+[node name="EnqueuedValue" type="Label" parent="MarginContainer/VBoxContainer/MetricsCard/VBoxContainer/GridContainer" unique_id=2012]
+layout_mode = 2
+text = "0"
+
+[node name="DequeuedTitle" type="Label" parent="MarginContainer/VBoxContainer/MetricsCard/VBoxContainer/GridContainer" unique_id=2013]
+layout_mode = 2
+text = "Total Dequeued:"
+
+[node name="DequeuedValue" type="Label" parent="MarginContainer/VBoxContainer/MetricsCard/VBoxContainer/GridContainer" unique_id=2014]
+layout_mode = 2
+text = "0"
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/MetricsCard/VBoxContainer" unique_id=2015]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+max_value = 10.0
+show_percentage = false
+
+[node name="QueuePanel" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=2016]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/QueuePanel" unique_id=2017]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ItemsLabel" type="Label" parent="MarginContainer/VBoxContainer/QueuePanel/VBoxContainer" unique_id=2018]
+layout_mode = 2
+text = "Waiting Entities in Buffer:"
+
+[node name="EmptyLabel" type="Label" parent="MarginContainer/VBoxContainer/QueuePanel/VBoxContainer" unique_id=2019]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Queue is currently empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tree" type="Tree" parent="MarginContainer/VBoxContainer/QueuePanel/VBoxContainer" unique_id=2020]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3

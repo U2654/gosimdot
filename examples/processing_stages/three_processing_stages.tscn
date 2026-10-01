@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cjvg3bkfl6bwm"]
+
+[ext_resource type="Script" uid="uid://c45uvj6v0qt84" path="res://examples/processing_stages/three_processing_stages.gd" id="1_okgbj"]
+
+[node name="ThreeProcessingStages" type="Node" unique_id=1173862399]
+script = ExtResource("1_okgbj")

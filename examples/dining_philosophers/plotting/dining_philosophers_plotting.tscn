@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://dkp04nax224k5"]
+
+[ext_resource type="Script" uid="uid://12n0cvo34rrq" path="res://dining_philosophers/plotting/dining_philosophers_plotting.gd" id="1_bvec2"]
+[ext_resource type="Script" uid="uid://6qqd3rbw8pet" path="res://dining_philosophers/plotting/draw_plot.gd" id="2_bhyie"]
+
+[node name="DiningPhilosophersPlotting" type="Control" unique_id=1891186203]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bvec2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=7957636]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1506811642]
+layout_mode = 2
+
+[node name="RunsHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=1068491768]
+layout_mode = 2
+
+[node name="NumberRunsLabel" type="Label" parent="HBoxContainer/VBoxContainer/RunsHBoxContainer" unique_id=1729453352]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
+text = "Number runs"
+
+[node name="NumberRunsLineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/RunsHBoxContainer" unique_id=1414606952]
+layout_mode = 2
+text = "1000"
+alignment = 2
+
+[node name="PFHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=665309581]
+layout_mode = 2
+
+[node name="PFLabel" type="Label" parent="HBoxContainer/VBoxContainer/PFHBoxContainer" unique_id=170434575]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
+text = "Number philsophers from: "
+
+[node name="PFLineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/PFHBoxContainer" unique_id=960545591]
+layout_mode = 2
+text = "2"
+alignment = 2
+
+[node name="PTHBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=712056636]
+layout_mode = 2
+
+[node name="PTLabel" type="Label" parent="HBoxContainer/VBoxContainer/PTHBoxContainer" unique_id=1549329824]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
+text = "Number philosophers to     "
+
+[node name="PTLineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/PTHBoxContainer" unique_id=99412829]
+layout_mode = 2
+text = "21"
+alignment = 2
+
+[node name="RunButton" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=387401949]
+layout_mode = 2
+text = "Run
+"
+
+[node name="PlotArea" type="Control" parent="HBoxContainer" unique_id=637858156]
+layout_mode = 2
+
+[node name="PlotCanvas" type="Node2D" parent="HBoxContainer/PlotArea" unique_id=606490407]
+script = ExtResource("2_bhyie")
+
+[node name="MinLabel" type="Label" parent="HBoxContainer/PlotArea/PlotCanvas" unique_id=1251469709]
+offset_left = 47.0
+offset_top = 716.0
+offset_right = 87.0
+offset_bottom = 739.0
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
+text = "Min"
+
+[node name="MaxLabel" type="Label" parent="HBoxContainer/PlotArea/PlotCanvas" unique_id=608881196]
+offset_left = 932.0
+offset_top = 14.0
+offset_right = 972.0
+offset_bottom = 37.0
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
+text = "Max"
+
+[node name="PlotLine2D" type="Line2D" parent="HBoxContainer/PlotArea/PlotCanvas" unique_id=1946491195]
+default_color = Color(0, 0, 0, 1)
+
+[connection signal="text_submitted" from="HBoxContainer/VBoxContainer/RunsHBoxContainer/NumberRunsLineEdit" to="." method="_on_number_runs_line_edit_text_submitted"]
+[connection signal="text_submitted" from="HBoxContainer/VBoxContainer/PFHBoxContainer/PFLineEdit" to="." method="_on_pf_line_edit_text_submitted"]
+[connection signal="text_submitted" from="HBoxContainer/VBoxContainer/PTHBoxContainer/PTLineEdit" to="." method="_on_pt_line_edit_text_submitted"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/RunButton" to="." method="_on_run_button_pressed"]

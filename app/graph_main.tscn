@@ -1,0 +1,293 @@
+[gd_scene format=3 uid="uid://bskmlb4me6dbq"]
+
+[ext_resource type="Script" uid="uid://brhromtnnnkmc" path="res://app/gui/top_bar.gd" id="1_g0k7x"]
+[ext_resource type="Script" uid="uid://4cj767c8g754" path="res://app/gui/menu_bar.gd" id="1_jfmtm"]
+[ext_resource type="Theme" uid="uid://x5ohffn1ebh1" path="res://app/app.tres" id="1_kh7bo"]
+[ext_resource type="Script" uid="uid://cofp5af36irfu" path="res://app/graph_main.gd" id="2_mjsn1"]
+[ext_resource type="Script" uid="uid://b6xjn8vu0p2je" path="res://addons/gosimdot/core/simulation_manager.gd" id="3_yfplg"]
+[ext_resource type="Script" uid="uid://bcrdgqtqkjo2w" path="res://app/gui/status_bar.gd" id="4_status"]
+
+[node name="Main" type="VBoxContainer" unique_id=2051977588]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_kh7bo")
+
+[node name="MenuBar" type="MenuBar" parent="." unique_id=78109935]
+layout_mode = 2
+script = ExtResource("1_jfmtm")
+
+[node name="FileMenu" type="PopupMenu" parent="MenuBar" unique_id=1380907928]
+oversampling_override = 1.0
+title = "File"
+item_count = 5
+item_0/text = "New"
+item_0/id = 1
+item_1/text = "Load"
+item_1/id = 2
+item_2/text = "Save"
+item_2/id = 3
+item_3/id = 0
+item_3/separator = true
+item_4/text = "Quit"
+item_4/id = 0
+
+[node name="ExamplesMenu" type="PopupMenu" parent="MenuBar" unique_id=1380907929]
+oversampling_override = 1.0
+title = "Examples"
+item_count = 7
+item_0/text = "Parallel Servers"
+item_0/id = 0
+item_1/text = "Router 2-Way"
+item_1/id = 1
+item_2/text = "Router 3-Way"
+item_2/id = 2
+item_3/text = "Three Processing Stages"
+item_3/id = 3
+item_4/text = "Resource Pool Demo"
+item_4/id = 4
+item_5/text = "Typed Service Delay"
+item_5/id = 5
+item_6/text = "Demo Network"
+item_6/id = 6
+
+[node name="ViewMenu" type="PopupMenu" parent="MenuBar" unique_id=1380907930]
+oversampling_override = 1.0
+title = "View"
+item_count = 4
+item_0/text = "Reset View / Zoom"
+item_0/id = 0
+item_1/text = "Toggle Minimap"
+item_1/id = 1
+item_2/id = 0
+item_2/separator = true
+item_3/text = "Clear All Connections"
+item_3/id = 2
+
+[node name="TopBar" type="PanelContainer" parent="." unique_id=774897526]
+layout_mode = 2
+script = ExtResource("1_g0k7x")
+
+[node name="VBox" type="VBoxContainer" parent="TopBar" unique_id=774897527]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="PaletteRow" type="HBoxContainer" parent="TopBar/VBox" unique_id=774897528]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PaletteLabel" type="Label" parent="TopBar/VBox/PaletteRow" unique_id=774897529]
+layout_mode = 2
+text = "Nodes:"
+
+[node name="AddSourceButton" type="Button" parent="TopBar/VBox/PaletteRow" unique_id=1567687683]
+layout_mode = 2
+tooltip_text = "Add Source entity generator"
+text = "+ Source"
+
+[node name="AddQueueButton" type="Button" parent="TopBar/VBox/PaletteRow" unique_id=883694364]
+layout_mode = 2
+tooltip_text = "Add Queue FIFO buffer"
+text = "+ Queue"
+
+[node name="AddDelayButton" type="Button" parent="TopBar/VBox/PaletteRow" unique_id=747543420]
+layout_mode = 2
+tooltip_text = "Add Delay processing server"
+text = "+ Delay"
+
+[node name="AddRouterButton" type="Button" parent="TopBar/VBox/PaletteRow" unique_id=1010087139]
+layout_mode = 2
+tooltip_text = "Add Router multi-output fork"
+text = "+ Router"
+
+[node name="AddSinkButton" type="Button" parent="TopBar/VBox/PaletteRow" unique_id=1189232657]
+layout_mode = 2
+tooltip_text = "Add Sink entity collector"
+text = "+ Sink"
+
+[node name="VSeparator" type="VSeparator" parent="TopBar/VBox/PaletteRow" unique_id=221824321]
+layout_mode = 2
+
+[node name="AddResourceButton" type="Button" parent="TopBar/VBox/PaletteRow" unique_id=989196169]
+layout_mode = 2
+tooltip_text = "Add Shared capacity resource pool"
+text = "+ Resource"
+
+[node name="DecideMenuButton" type="MenuButton" parent="TopBar/VBox/PaletteRow" unique_id=989196170]
+layout_mode = 2
+tooltip_text = "Add decision rule and routing nodes"
+text = "+ Decision ▼"
+
+[node name="PaletteSpacer" type="Control" parent="TopBar/VBox/PaletteRow" unique_id=774897530]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SimulationRow" type="HBoxContainer" parent="TopBar/VBox" unique_id=774897531]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ControlLabel" type="Label" parent="TopBar/VBox/SimulationRow" unique_id=774897532]
+layout_mode = 2
+text = "Sim:"
+
+[node name="ResetButton" type="Button" parent="TopBar/VBox/SimulationRow" unique_id=2117031453]
+layout_mode = 2
+tooltip_text = "Reset simulation state to time 0"
+text = "↺ Reset"
+
+[node name="StepButton" type="Button" parent="TopBar/VBox/SimulationRow" unique_id=1180249945]
+layout_mode = 2
+tooltip_text = "Execute the single next simulation event (Space)"
+text = "⏭ Step"
+
+[node name="PlayButton" type="Button" parent="TopBar/VBox/SimulationRow" unique_id=2117031454]
+layout_mode = 2
+tooltip_text = "Run simulation continuously"
+text = "▶ Play"
+
+[node name="PauseButton" type="Button" parent="TopBar/VBox/SimulationRow" unique_id=2007285390]
+layout_mode = 2
+tooltip_text = "Pause continuous simulation"
+text = "⏸ Pause"
+
+[node name="SpeedLabel" type="Label" parent="TopBar/VBox/SimulationRow" unique_id=2117031455]
+layout_mode = 2
+text = "Speed:"
+
+[node name="SpeedOptionButton" type="OptionButton" parent="TopBar/VBox/SimulationRow" unique_id=2117031456]
+layout_mode = 2
+
+[node name="VSeparator4" type="VSeparator" parent="TopBar/VBox/SimulationRow" unique_id=235071730]
+layout_mode = 2
+
+[node name="RunDurationSpinBox" type="SpinBox" parent="TopBar/VBox/SimulationRow" unique_id=561036745]
+layout_mode = 2
+max_value = 1000.0
+value = 10.0
+
+[node name="RunNextButton" type="Button" parent="TopBar/VBox/SimulationRow" unique_id=2117773200]
+layout_mode = 2
+tooltip_text = "Advance simulation by step duration"
+text = "+ Step Time"
+
+[node name="VSeparator5" type="VSeparator" parent="TopBar/VBox/SimulationRow" unique_id=235071731]
+layout_mode = 2
+
+[node name="MaxStepLabel" type="Label" parent="TopBar/VBox/SimulationRow" unique_id=675907201]
+layout_mode = 2
+text = "Target:"
+
+[node name="MaxStepsLineEdit" type="LineEdit" parent="TopBar/VBox/SimulationRow" unique_id=1115634634]
+layout_mode = 2
+text = "100"
+alignment = 2
+
+[node name="RunButton" type="Button" parent="TopBar/VBox/SimulationRow" unique_id=1987653365]
+layout_mode = 2
+tooltip_text = "Run until target simulation time"
+text = "▶▶ Run To"
+
+[node name="Spacer" type="Control" parent="TopBar/VBox/SimulationRow" unique_id=75241404]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClockCard" type="PanelContainer" parent="TopBar/VBox/SimulationRow" unique_id=1858571360]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopBar/VBox/SimulationRow/ClockCard" unique_id=1858571361]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TimeLabel" type="Label" parent="TopBar/VBox/SimulationRow/ClockCard/HBoxContainer" unique_id=1858571363]
+layout_mode = 2
+text = "Time: 0.00 s"
+
+[node name="StateBadge" type="Label" parent="TopBar/VBox/SimulationRow/ClockCard/HBoxContainer" unique_id=1858571364]
+modulate = Color(0.5, 0.55, 0.6, 1)
+layout_mode = 2
+text = "● IDLE"
+
+[node name="GraphEdit" type="GraphEdit" parent="." unique_id=1249215852]
+layout_mode = 2
+size_flags_vertical = 3
+right_disconnects = true
+script = ExtResource("2_mjsn1")
+
+[node name="StatusBar" type="PanelContainer" parent="." unique_id=9001]
+layout_mode = 2
+script = ExtResource("4_status")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="StatusBar" unique_id=9002]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="NodesLabel" type="Label" parent="StatusBar/HBoxContainer" unique_id=9003]
+layout_mode = 2
+text = "Nodes: 0"
+
+[node name="VSeparator" type="VSeparator" parent="StatusBar/HBoxContainer" unique_id=9004]
+layout_mode = 2
+
+[node name="ConnsLabel" type="Label" parent="StatusBar/HBoxContainer" unique_id=9005]
+layout_mode = 2
+text = "Connections: 0"
+
+[node name="VSeparator2" type="VSeparator" parent="StatusBar/HBoxContainer" unique_id=9006]
+layout_mode = 2
+
+[node name="EventsLabel" type="Label" parent="StatusBar/HBoxContainer" unique_id=9007]
+layout_mode = 2
+text = "Events in Queue: 0"
+
+[node name="VSeparator3" type="VSeparator" parent="StatusBar/HBoxContainer" unique_id=9008]
+layout_mode = 2
+
+[node name="StatusMessageLabel" type="Label" parent="StatusBar/HBoxContainer" unique_id=9009]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Ready"
+
+[node name="ZoomLabel" type="Label" parent="StatusBar/HBoxContainer" unique_id=9010]
+layout_mode = 2
+text = "Zoom: 100%"
+
+[node name="ResetViewButton" type="Button" parent="StatusBar/HBoxContainer" unique_id=9011]
+layout_mode = 2
+tooltip_text = "Reset canvas position and zoom level"
+text = "Center View"
+
+[node name="MinimapButton" type="Button" parent="StatusBar/HBoxContainer" unique_id=9012]
+layout_mode = 2
+tooltip_text = "Toggle canvas minimap overlay"
+text = "Minimap"
+
+[node name="SimulationManager" type="Node" parent="." unique_id=1602676389]
+script = ExtResource("3_yfplg")
+metadata/_custom_type_script = "uid://b6xjn8vu0p2je"
+
+[node name="FileDialog" type="FileDialog" parent="." unique_id=1029563829]
+filters = PackedStringArray("*.json")
+
+[connection signal="id_pressed" from="MenuBar/FileMenu" to="MenuBar" method="_on_file_menu_id_pressed"]
+[connection signal="id_pressed" from="MenuBar/ExamplesMenu" to="MenuBar" method="_on_examples_menu_id_pressed"]
+[connection signal="id_pressed" from="MenuBar/ViewMenu" to="MenuBar" method="_on_view_menu_id_pressed"]
+[connection signal="pressed" from="TopBar/VBox/PaletteRow/AddSourceButton" to="TopBar" method="_on_an_add_button_pressed" binds= [1]]
+[connection signal="pressed" from="TopBar/VBox/PaletteRow/AddQueueButton" to="TopBar" method="_on_an_add_button_pressed" binds= [3]]
+[connection signal="pressed" from="TopBar/VBox/PaletteRow/AddDelayButton" to="TopBar" method="_on_an_add_button_pressed" binds= [4]]
+[connection signal="pressed" from="TopBar/VBox/PaletteRow/AddRouterButton" to="TopBar" method="_on_an_add_button_pressed" binds= [5]]
+[connection signal="pressed" from="TopBar/VBox/PaletteRow/AddSinkButton" to="TopBar" method="_on_an_add_button_pressed" binds= [2]]
+[connection signal="pressed" from="TopBar/VBox/PaletteRow/AddResourceButton" to="TopBar" method="_on_an_add_button_pressed" binds= [16]]
+[connection signal="pressed" from="TopBar/VBox/SimulationRow/ResetButton" to="TopBar" method="_on_reset_button_pressed"]
+[connection signal="pressed" from="TopBar/VBox/SimulationRow/StepButton" to="TopBar" method="_on_step_button_pressed"]
+[connection signal="pressed" from="TopBar/VBox/SimulationRow/PlayButton" to="TopBar" method="_on_play_button_pressed"]
+[connection signal="pressed" from="TopBar/VBox/SimulationRow/PauseButton" to="TopBar" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="TopBar/VBox/SimulationRow/RunNextButton" to="TopBar" method="_on_run_next_button_pressed"]
+[connection signal="text_submitted" from="TopBar/VBox/SimulationRow/MaxStepsLineEdit" to="TopBar" method="_on_max_steps_line_edit_text_submitted"]
+[connection signal="pressed" from="TopBar/VBox/SimulationRow/RunButton" to="TopBar" method="_on_run_button_pressed"]
+[connection signal="connection_request" from="GraphEdit" to="GraphEdit" method="_on_connection_request"]
+[connection signal="disconnection_request" from="GraphEdit" to="GraphEdit" method="_on_disconnection_request"]
+[connection signal="pressed" from="StatusBar/HBoxContainer/ResetViewButton" to="StatusBar" method="_on_reset_view_pressed"]
+[connection signal="pressed" from="StatusBar/HBoxContainer/MinimapButton" to="StatusBar" method="_on_toggle_minimap_pressed"]
+[connection signal="file_selected" from="FileDialog" to="MenuBar" method="_on_file_dialog_file_selected"]

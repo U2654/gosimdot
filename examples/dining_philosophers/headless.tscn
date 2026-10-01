@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cwu036cy5gp8g"]
+
+[ext_resource type="Script" uid="uid://duxsbfia5elgc" path="res://examples/dining_philosophers/headless.gd" id="1_uefrg"]
+
+[node name="Headless" type="Node" unique_id=354968909]
+script = ExtResource("1_uefrg")

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://of86tvyuag2k"]
+
+[ext_resource type="Script" uid="uid://b7g5tvm6lgvcx" path="res://examples/customer_counter/customer_counter.gd" id="1_nunpa"]
+
+[node name="CustomerCounter" type="Node" unique_id=2058033991]
+script = ExtResource("1_nunpa")

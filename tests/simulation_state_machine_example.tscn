@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://kloghpsj0vm2"]
+
+[ext_resource type="Script" uid="uid://bvfjg40mq5jhg" path="res://tests/simulation_state_machine_example_vis.gd" id="1_gajtu"]
+[ext_resource type="Script" uid="uid://dcbsaettt6qte" path="res://tests/simulation_state_machine_example.gd" id="1_st7c1"]
+
+[node name="SimulationStatemachineExampleControl" type="Control" unique_id=1387324749]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(2, 2)
+script = ExtResource("1_gajtu")
+
+[node name="SimulationStateMachineExample" type="Node" parent="." unique_id=951428424]
+script = ExtResource("1_st7c1")
+
+[node name="OneLabel" type="Label" parent="." unique_id=2128682490]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 119.0
+offset_right = 181.0
+offset_bottom = 142.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "ONE"
+
+[node name="TwoLabel" type="Label" parent="." unique_id=1578517738]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 231.0
+offset_right = 300.0
+offset_bottom = 254.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "TWO"
+
+[node name="ThreeLabel" type="Label" parent="." unique_id=1819837444]
+layout_mode = 0
+offset_left = 329.0
+offset_top = 114.0
+offset_right = 379.0
+offset_bottom = 137.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "THREE"
+
+[node name="OneTwoLine2D" type="Line2D" parent="." unique_id=1158459749]
+points = PackedVector2Array(160, 143, 246, 235, 247, 227)
+width = 2.0
+end_cap_mode = 2
+
+[node name="Label" type="Label" parent="OneTwoLine2D" unique_id=2013335788]
+offset_left = 200.0
+offset_top = 160.0
+offset_right = 240.0
+offset_bottom = 183.0
+text = "a"
+
+[node name="OneThreeLine2D" type="Line2D" parent="." unique_id=2015405289]
+position = Vector2(5, 9)
+points = PackedVector2Array(188, 121, 312, 114, 305, 123)
+width = 2.0
+
+[node name="Label" type="Label" parent="OneThreeLine2D" unique_id=452396041]
+offset_left = 244.0
+offset_top = 123.0
+offset_right = 284.0
+offset_bottom = 146.0
+text = "b"
+
+[node name="OneTwoLine2D3" type="Line2D" parent="." unique_id=1647009668]
+points = PackedVector2Array(298, 224, 337, 139, 339, 146)
+width = 2.0
+end_cap_mode = 1
+
+[node name="Label" type="Label" parent="OneTwoLine2D3" unique_id=609795489]
+offset_left = 325.0
+offset_top = 183.0
+offset_right = 365.0
+offset_bottom = 206.0
+text = "a"
+
+[node name="ThreeOneLine2D" type="Line2D" parent="." unique_id=653495979]
+position = Vector2(2, 28)
+points = PackedVector2Array(315, 84, 188, 87, 200, 78)
+width = 2.0
+
+[node name="Label" type="Label" parent="ThreeOneLine2D" unique_id=587481412]
+offset_left = 250.0
+offset_top = 59.0
+offset_right = 290.0
+offset_bottom = 82.0
+text = "a"
+
+[node name="AButton" type="Button" parent="." unique_id=131826087]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 266.0
+offset_right = 62.0
+offset_bottom = 297.0
+text = "a"
+
+[node name="BButton" type="Button" parent="." unique_id=689172875]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 266.0
+offset_right = 98.0
+offset_bottom = 297.0
+text = "b"
+
+[connection signal="pressed" from="AButton" to="SimulationStateMachineExample" method="process_event" binds= ["a"]]
+[connection signal="pressed" from="BButton" to="SimulationStateMachineExample" method="process_event" binds= ["b"]]

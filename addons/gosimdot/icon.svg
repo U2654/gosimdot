@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#212735"/>
+      <stop offset="100%" stop-color="#141822"/>
+    </linearGradient>
+
+    <!-- Path / Flow Gradient -->
+    <linearGradient id="flowGrad" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#3d85c6"/>
+      <stop offset="50%" stop-color="#47b8ff"/>
+      <stop offset="100%" stop-color="#41e2ba"/>
+    </linearGradient>
+
+    <!-- Node Glow Gradients -->
+    <linearGradient id="dotGradPrimary" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#66c0ff"/>
+      <stop offset="100%" stop-color="#2472b8"/>
+    </linearGradient>
+
+    <linearGradient id="dotGradAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5affda"/>
+      <stop offset="100%" stop-color="#179e7c"/>
+    </linearGradient>
+
+    <linearGradient id="dotGradOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffbe54"/>
+      <stop offset="100%" stop-color="#e07519"/>
+    </linearGradient>
+
+    <!-- Subtle Drop Shadow -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#47b8ff" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Container Base -->
+  <rect x="6" y="6" width="116" height="116" rx="26" fill="url(#bgGrad)" stroke="#37435e" stroke-width="3"/>
+
+  <!-- Discrete Event Simulation Timeline Grid (Subtle) -->
+  <line x1="22" y1="96" x2="106" y2="96" stroke="#2c364c" stroke-width="2" stroke-linecap="round"/>
+  <line x1="26" y1="92" x2="26" y2="100" stroke="#37435e" stroke-width="2" stroke-linecap="round"/>
+  <line x1="52" y1="92" x2="52" y2="100" stroke="#37435e" stroke-width="2" stroke-linecap="round"/>
+  <line x1="78" y1="92" x2="78" y2="100" stroke="#37435e" stroke-width="2" stroke-linecap="round"/>
+  <line x1="104" y1="92" x2="104" y2="100" stroke="#37435e" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Stepped Event Horizon (Discrete Step Function in background) -->
+  <path d="M 26 84 L 52 84 L 52 64 L 78 64 L 78 38 L 104 38" fill="none" stroke="#2b374e" stroke-width="2.5" stroke-dasharray="3,3" stroke-linecap="round"/>
+
+  <!-- Flow Paths connecting Discrete Event Nodes -->
+  <path d="M 26 76 C 38 76, 42 42, 54 42 C 66 42, 66 74, 78 74 C 90 74, 92 46, 104 46" fill="none" stroke="url(#flowGrad)" stroke-width="5" stroke-linecap="round" filter="url(#glow)"/>
+
+  <!-- Secondary Queue / Resource Branch -->
+  <path d="M 54 42 C 66 42, 66 58, 78 58 C 88 58, 94 48, 104 46" fill="none" stroke="#324563" stroke-width="2.5" stroke-dasharray="4,4" stroke-linecap="round"/>
+
+  <!-- Discrete Event Dots (GoSimDot) -->
+  <!-- Node 1: Arrival / Source -->
+  <circle cx="26" cy="76" r="10" fill="#141822" stroke="#478cbf" stroke-width="3"/>
+  <circle cx="26" cy="76" r="5" fill="url(#dotGradPrimary)"/>
+
+  <!-- Node 2: Processing Server (Active) -->
+  <circle cx="54" cy="42" r="12" fill="#141822" stroke="#ffaa33" stroke-width="3.5"/>
+  <circle cx="54" cy="42" r="6" fill="url(#dotGradOrange)"/>
+
+  <!-- Node 3: Queue / Buffer -->
+  <circle cx="78" cy="74" r="10" fill="#141822" stroke="#38bdf8" stroke-width="3"/>
+  <circle cx="78" cy="74" r="5" fill="#38bdf8"/>
+
+  <!-- Node 4: Departure / Sink -->
+  <circle cx="104" cy="46" r="11" fill="#141822" stroke="#41e2ba" stroke-width="3.5"/>
+  <circle cx="104" cy="46" r="5.5" fill="url(#dotGradAccent)"/>
+
+  <!-- Directional Flow Pulse (Arrowhead on outgoing branch) -->
+  <polygon points="101,36 109,46 98,51" fill="#41e2ba" transform="rotate(-15 104 46)"/>
+</svg>

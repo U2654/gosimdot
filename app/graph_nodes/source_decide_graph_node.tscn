@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://c4s2k3qog0hab"]
+
+[ext_resource type="Script" uid="uid://1fcxjdlrx5rc" path="res://app/graph_nodes/source_decide_graph_node.gd" id="1_bgk06"]
+[ext_resource type="PackedScene" uid="uid://b4m57l7uj50wo" path="res://app/graph_nodes/source_decide_info_window.tscn" id="2_alt8r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_decide_title"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.32, 0.36, 0.65, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[node name="DecideGraphNode" type="GraphNode" unique_id=13491828]
+custom_minimum_size = Vector2(160, 65)
+offset_right = 160.0
+offset_bottom = 65.0
+theme_override_styles/titlebar = SubResource("StyleBoxFlat_decide_title")
+title = "Source Decide"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 2
+slot/0/right_color = Color(0.35, 0.45, 0.95, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_bgk06")
+info_window_scene = ExtResource("2_alt8r")
+
+[node name="Label" type="Label" parent="." unique_id=2067667285]
+layout_mode = 2
+text = "Probabilities"
+horizontal_alignment = 1

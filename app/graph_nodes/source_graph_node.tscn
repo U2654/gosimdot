@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://6ybj14cqbldc"]
+
+[ext_resource type="Script" uid="uid://coe3l7jgw2yw8" path="res://app/graph_nodes/source_graph_node.gd" id="1_oulsc"]
+[ext_resource type="PackedScene" uid="uid://ci3qlfgidjx7e" path="res://app/graph_nodes/source_info_window.tscn" id="2_j1xom"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_source_title"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.16, 0.48, 0.28, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[node name="SimGraphNode" type="GraphNode" unique_id=1385364022]
+custom_minimum_size = Vector2(160, 65)
+offset_right = 160.0
+offset_bottom = 65.0
+theme_override_styles/titlebar = SubResource("StyleBoxFlat_source_title")
+title = "Source"
+slot/0/left_enabled = false
+slot/0/left_type = -1
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 1
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = true
+slot/1/left_type = 2
+slot/1/left_color = Color(0.35, 0.45, 0.95, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+script = ExtResource("1_oulsc")
+info_window_scene = ExtResource("2_j1xom")
+
+[node name="IdLabel" type="Label" parent="." unique_id=1666151855]
+layout_mode = 2
+text = "Generated: 0"
+horizontal_alignment = 1
+
+[node name="TypeLabel" type="Label" parent="." unique_id=2073758832]
+layout_mode = 2
+text = "Ready"
+horizontal_alignment = 1

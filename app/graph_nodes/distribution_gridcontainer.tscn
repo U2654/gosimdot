@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bjj8l13smcd6v"]
+
+[ext_resource type="Script" uid="uid://b6drx5qjm6f8" path="res://app/graph_nodes/distribution_gridcontainer.gd" id="1_1wydk"]
+
+[node name="DistributionControl" type="Control" unique_id=1651346046]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_1wydk")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1001]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1002]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ModelSection" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1003]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="DistributionLabel" type="Label" parent="MarginContainer/VBoxContainer/ModelSection" unique_id=384711137]
+layout_mode = 2
+text = "Distribution Model"
+
+[node name="DistributionOptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/ModelSection" unique_id=385843281]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ParamsPanel" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=1004]
+layout_mode = 2
+
+[node name="DistributionVBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ParamsPanel" unique_id=1676663617]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="SummaryPanel" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=1005]
+layout_mode = 2
+
+[node name="MeanLabel" type="Label" parent="MarginContainer/VBoxContainer/SummaryPanel" unique_id=1006]
+layout_mode = 2
+text = "Expected Mean: 1.000 s"
+horizontal_alignment = 1
+
+[node name="PreviewPanel" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=1007]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DistributionPreview" type="Control" parent="MarginContainer/VBoxContainer/PreviewPanel" unique_id=1008]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 3

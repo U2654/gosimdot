@@ -1,0 +1,133 @@
+{
+  "connections": [
+    {
+      "from_node": "SourceDecide2",
+      "from_port": 0,
+      "keep_alive": false,
+      "to_node": "SourceNode1",
+      "to_port": 0
+    },
+    {
+      "from_node": "SourceNode1",
+      "from_port": 0,
+      "keep_alive": false,
+      "to_node": "QueueNode8",
+      "to_port": 0
+    },
+    {
+      "from_node": "QueueNode8",
+      "from_port": 0,
+      "keep_alive": false,
+      "to_node": "RouteNode3",
+      "to_port": 0
+    },
+    {
+      "from_node": "RouteDecide7",
+      "from_port": 0,
+      "keep_alive": false,
+      "to_node": "RouteNode3",
+      "to_port": 1
+    },
+    {
+      "from_node": "RouteNode3",
+      "from_port": 0,
+      "keep_alive": false,
+      "to_node": "SinkNode4",
+      "to_port": 0
+    },
+    {
+      "from_node": "RouteNode3",
+      "from_port": 1,
+      "keep_alive": false,
+      "to_node": "SinkNode5",
+      "to_port": 0
+    },
+    {
+      "from_node": "RouteNode3",
+      "from_port": 2,
+      "keep_alive": false,
+      "to_node": "SinkNode6",
+      "to_port": 0
+    }
+  ],
+  "nodes": [
+    {
+      "custom_data": {
+        "A": 0.34,
+        "B": 0.33,
+        "C": 0.33
+      },
+      "name": "SourceDecide2",
+      "pos_x": 80.0,
+      "pos_y": 380.0,
+      "title": "0",
+      "type": "res://app/graph_nodes/source_decide_graph_node.tscn"
+    },
+    {
+      "custom_data": {
+        "lambda": 0.2,
+        "type": 1
+      },
+      "name": "SourceNode1",
+      "pos_x": 80.0,
+      "pos_y": 180.0,
+      "title": "1",
+      "type": "res://app/graph_nodes/source_graph_node.tscn"
+    },
+    {
+      "custom_data": null,
+      "name": "QueueNode8",
+      "pos_x": 360.0,
+      "pos_y": 180.0,
+      "title": "2",
+      "type": "res://app/graph_nodes/queue_graph_node.tscn"
+    },
+    {
+      "custom_data": {
+        "A": 0.0,
+        "B": 1.0,
+        "C": 2.0
+      },
+      "name": "RouteDecide7",
+      "pos_x": 640.0,
+      "pos_y": 380.0,
+      "title": "3",
+      "type": "res://app/graph_nodes/route_decide_graph_node.tscn"
+    },
+    {
+      "custom_data": {
+        "OutPort2Label": true,
+        "OutPort3Label": false
+      },
+      "name": "RouteNode3",
+      "pos_x": 640.0,
+      "pos_y": 180.0,
+      "title": "4",
+      "type": "res://app/graph_nodes/route_graph_node.tscn"
+    },
+    {
+      "custom_data": null,
+      "name": "SinkNode4",
+      "pos_x": 920.0,
+      "pos_y": 40.0,
+      "title": "5",
+      "type": "res://app/graph_nodes/sink_graph_node.tscn"
+    },
+    {
+      "custom_data": null,
+      "name": "SinkNode5",
+      "pos_x": 920.0,
+      "pos_y": 180.0,
+      "title": "6",
+      "type": "res://app/graph_nodes/sink_graph_node.tscn"
+    },
+    {
+      "custom_data": null,
+      "name": "SinkNode6",
+      "pos_x": 920.0,
+      "pos_y": 320.0,
+      "title": "7",
+      "type": "res://app/graph_nodes/sink_graph_node.tscn"
+    }
+  ]
+}

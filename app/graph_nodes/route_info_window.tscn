@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://dmkr5h3jn85e6"]
+
+[ext_resource type="Script" uid="uid://d1alc0jirtqlv" path="res://app/graph_nodes/route_info_window.gd" id="1_xycpd"]
+
+[node name="InfoWindow" type="Window" unique_id=112158056]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+size = Vector2i(340, 290)
+min_size = Vector2i(300, 240)
+script = ExtResource("1_xycpd")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=5001]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1082462451]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HeaderLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=5002]
+layout_mode = 2
+text = "Router Configuration"
+
+[node name="ConfigCard" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=5003]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ConfigCard" unique_id=318999540]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="OutputNumberLabel" type="Label" parent="MarginContainer/VBoxContainer/ConfigCard/HBoxContainer" unique_id=77653823]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Active Output Ports:"
+
+[node name="OutputNumberSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/ConfigCard/HBoxContainer" unique_id=85187367]
+layout_mode = 2
+min_value = 2.0
+max_value = 4.0
+value = 2.0
+alignment = 2
+
+[node name="PortsCard" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=5004]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PortsCard" unique_id=5005]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PortsHeader" type="Label" parent="MarginContainer/VBoxContainer/PortsCard/VBoxContainer" unique_id=5006]
+layout_mode = 2
+text = "Port Routing Availability:"
+
+[node name="PortList" type="GridContainer" parent="MarginContainer/VBoxContainer/PortsCard/VBoxContainer" unique_id=5007]
+layout_mode = 2
+columns = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 4
+
+[node name="Port0Label" type="Label" parent="MarginContainer/VBoxContainer/PortsCard/VBoxContainer/PortList" unique_id=5008]
+layout_mode = 2
+text = "Port 0 (Primary):"
+
+[node name="Port0Badge" type="Label" parent="MarginContainer/VBoxContainer/PortsCard/VBoxContainer/PortList" unique_id=5009]
+modulate = Color(0.1, 0.6, 0.2, 1)
+layout_mode = 2
+text = "[ Enabled ]"
+
+[node name="Port1Label" type="Label" parent="MarginContainer/VBoxContainer/PortsCard/VBoxContainer/PortList" unique_id=5010]
+layout_mode = 2
+text = "Port 1 (Secondary):"
+
+[node name="Port1Badge" type="Label" parent="MarginContainer/VBoxContainer/PortsCard/VBoxContainer/PortList" unique_id=5011]
+modulate = Color(0.1, 0.6, 0.2, 1)
+layout_mode = 2
+text = "[ Enabled ]"
+
+[node name="Port2Label" type="Label" parent="MarginContainer/VBoxContainer/PortsCard/VBoxContainer/PortList" unique_id=5012]
+layout_mode = 2
+text = "Port 2 (Branch):"
+
+[node name="Port2Badge" type="Label" parent="MarginContainer/VBoxContainer/PortsCard/VBoxContainer/PortList" unique_id=5013]
+modulate = Color(0.5, 0.5, 0.5, 1)
+layout_mode = 2
+text = "[ Disabled ]"
+
+[node name="Port3Label" type="Label" parent="MarginContainer/VBoxContainer/PortsCard/VBoxContainer/PortList" unique_id=5014]
+layout_mode = 2
+text = "Port 3 (Branch):"
+
+[node name="Port3Badge" type="Label" parent="MarginContainer/VBoxContainer/PortsCard/VBoxContainer/PortList" unique_id=5015]
+modulate = Color(0.5, 0.5, 0.5, 1)
+layout_mode = 2
+text = "[ Disabled ]"
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ConfigCard/HBoxContainer/OutputNumberSpinBox" to="." method="_on_output_number_spin_box_value_changed"]

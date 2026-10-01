@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://dqotyu0i7a83i"]
+
+[ext_resource type="Script" uid="uid://dyhljxsotqmw6" path="res://app/graph_nodes/resource_info_window.gd" id="1_ml33w"]
+
+[node name="InfoWindow" type="Window" unique_id=112158056]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+size = Vector2i(340, 260)
+min_size = Vector2i(300, 220)
+script = ExtResource("1_ml33w")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=4001]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=4002]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HeaderLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=4003]
+layout_mode = 2
+text = "Resource Pool Manager"
+
+[node name="ConfigCard" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=4004]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ConfigCard" unique_id=789752489]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="CapacityLabel" type="Label" parent="MarginContainer/VBoxContainer/ConfigCard/HBoxContainer" unique_id=1830932494]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Pool Capacity:"
+
+[node name="CapacitySpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/ConfigCard/HBoxContainer" unique_id=2146505183]
+layout_mode = 2
+min_value = 1.0
+max_value = 100.0
+value = 1.0
+alignment = 2
+
+[node name="StatusCard" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=4005]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/StatusCard" unique_id=4006]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="StatusHeader" type="Label" parent="MarginContainer/VBoxContainer/StatusCard/VBoxContainer" unique_id=4007]
+layout_mode = 2
+text = "Real-time Pool Status:"
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/StatusCard/VBoxContainer" unique_id=4008]
+layout_mode = 2
+columns = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 4
+
+[node name="UsageTitle" type="Label" parent="MarginContainer/VBoxContainer/StatusCard/VBoxContainer/GridContainer" unique_id=4009]
+layout_mode = 2
+text = "Active Units in Use:"
+
+[node name="UsageValue" type="Label" parent="MarginContainer/VBoxContainer/StatusCard/VBoxContainer/GridContainer" unique_id=4010]
+layout_mode = 2
+text = "0 / 1 in use"
+
+[node name="QueueTitle" type="Label" parent="MarginContainer/VBoxContainer/StatusCard/VBoxContainer/GridContainer" unique_id=4011]
+layout_mode = 2
+text = "Pending Claims Queue:"
+
+[node name="QueueValue" type="Label" parent="MarginContainer/VBoxContainer/StatusCard/VBoxContainer/GridContainer" unique_id=4012]
+layout_mode = 2
+text = "0 waiting"
+
+[node name="UtilizationBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/StatusCard/VBoxContainer" unique_id=4013]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+max_value = 1.0
+show_percentage = false

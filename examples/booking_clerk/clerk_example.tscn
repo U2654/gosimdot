@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bxiy6p1evvwti"]
+
+[ext_resource type="Script" uid="uid://b2maqcwfrf0lr" path="res://examples/booking_clerk/clerk_example.gd" id="1_qfxfv"]
+
+[node name="ClerkExample" type="Node" unique_id=1891431157]
+script = ExtResource("1_qfxfv")

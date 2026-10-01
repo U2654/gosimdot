@@ -1,0 +1,274 @@
+[gd_scene format=3 uid="uid://1eyipb1gtbul"]
+
+[ext_resource type="Script" uid="uid://b22d278y6grbw" path="res://examples/processing_stages/three_processing_stages_vis.gd" id="1_ioq1b"]
+[ext_resource type="Script" uid="uid://c45uvj6v0qt84" path="res://examples/processing_stages/three_processing_stages.gd" id="1_r6v01"]
+[ext_resource type="Script" uid="uid://cmygwwm5fuyjp" path="res://examples/processing_stages/pre_polygon_2d.gd" id="2_ioq1b"]
+[ext_resource type="PackedScene" uid="uid://d248r4bgc6kan" path="res://examples/processing_stages/sim_control_bar.tscn" id="2_n5ujf"]
+[ext_resource type="Script" uid="uid://c1npw6cwi32d1" path="res://examples/processing_stages/main_polygon_2d.gd" id="4_1h82f"]
+[ext_resource type="Script" uid="uid://dlahp2cv2v3c1" path="res://examples/processing_stages/post_polygon_2d.gd" id="5_ktc7y"]
+[ext_resource type="Script" uid="uid://cat0hrds1tqxw" path="res://examples/processing_stages/log_rich_text_label.gd" id="6_ygorr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_status"]
+bg_color = Color(0.14, 0.17, 0.23, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.28, 0.35, 0.48, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_log"]
+bg_color = Color(0.12, 0.14, 0.19, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.28, 0.35, 0.48, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="ThreeProcessingStagesVis" type="Node2D" unique_id=537226600]
+script = ExtResource("1_ioq1b")
+
+[node name="Background" type="ColorRect" parent="." unique_id=918237461]
+offset_right = 1600.0
+offset_bottom = 900.0
+color = Color(0.10, 0.12, 0.16, 1)
+
+[node name="SimControlBar" parent="." unique_id=2119352946 instance=ExtResource("2_n5ujf")]
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 1576.0
+offset_bottom = 60.0
+
+[node name="ThreeProcessingStages" type="Node" parent="." unique_id=2114503883]
+script = ExtResource("1_r6v01")
+
+[node name="PrePolygon2D" type="Polygon2D" parent="." unique_id=459207159]
+position = Vector2(220, 480)
+color = Color(0.16, 0.2, 0.26, 1)
+polygon = PackedVector2Array(-170, -50, 85, -50, 85, 50, -170, 50)
+script = ExtResource("2_ioq1b")
+
+[node name="MainPolygon2D" type="Polygon2D" parent="." unique_id=1218172567]
+position = Vector2(620, 480)
+color = Color(0.16, 0.2, 0.26, 1)
+polygon = PackedVector2Array(-230, -150, 110, -150, 110, 150, -230, 150)
+script = ExtResource("4_1h82f")
+
+[node name="PostPolygon2D" type="Polygon2D" parent="." unique_id=1730028450]
+position = Vector2(990, 480)
+color = Color(0.16, 0.2, 0.26, 1)
+polygon = PackedVector2Array(-200, -140, 110, -140, 110, 140, -200, 140)
+script = ExtResource("5_ktc7y")
+
+[node name="InfoNode2D" type="Node2D" parent="." unique_id=1186111836]
+
+[node name="ArrivalLine" type="Line2D" parent="InfoNode2D" unique_id=198273641]
+points = PackedVector2Array(15, 490, 48, 490)
+width = 3.0
+default_color = Color(0.38, 0.74, 0.98, 1)
+
+[node name="Line2D" type="Line2D" parent="InfoNode2D" unique_id=1808425292]
+points = PackedVector2Array(305, 490, 388, 490)
+width = 3.0
+default_color = Color(0.4, 0.85, 0.5, 1)
+
+[node name="Line2D2" type="Line2D" parent="InfoNode2D" unique_id=282680839]
+points = PackedVector2Array(715, 385, 788, 410)
+width = 2.0
+default_color = Color(0.5, 0.6, 0.75, 0.8)
+
+[node name="Line2D3" type="Line2D" parent="InfoNode2D" unique_id=847014977]
+points = PackedVector2Array(715, 385, 788, 550)
+width = 2.0
+default_color = Color(0.5, 0.6, 0.75, 0.8)
+
+[node name="Line2D4" type="Line2D" parent="InfoNode2D" unique_id=816301376]
+points = PackedVector2Array(715, 480, 788, 410)
+width = 2.0
+default_color = Color(0.5, 0.6, 0.75, 0.8)
+
+[node name="Line2D5" type="Line2D" parent="InfoNode2D" unique_id=1786522268]
+points = PackedVector2Array(715, 480, 788, 550)
+width = 2.0
+default_color = Color(0.5, 0.6, 0.75, 0.8)
+
+[node name="Line2D6" type="Line2D" parent="InfoNode2D" unique_id=969232456]
+points = PackedVector2Array(715, 575, 788, 410)
+width = 2.0
+default_color = Color(0.5, 0.6, 0.75, 0.8)
+
+[node name="Line2D7" type="Line2D" parent="InfoNode2D" unique_id=409546438]
+points = PackedVector2Array(715, 575, 788, 550)
+width = 2.0
+default_color = Color(0.5, 0.6, 0.75, 0.8)
+
+[node name="DepartureLine" type="Line2D" parent="InfoNode2D" unique_id=198273642]
+points = PackedVector2Array(1085, 480, 1145, 480)
+width = 3.0
+default_color = Color(0.3, 0.85, 0.4, 1)
+
+[node name="LabelArrival" type="Label" parent="InfoNode2D" unique_id=347748790]
+offset_left = 10.0
+offset_top = 450.0
+offset_right = 100.0
+offset_bottom = 475.0
+theme_override_colors/font_color = Color(0.38, 0.74, 0.98, 1)
+theme_override_font_sizes/font_size = 12
+text = "Arrivals (λ=0.1)"
+
+[node name="LabelPre" type="Label" parent="InfoNode2D" unique_id=347748795]
+offset_left = 65.0
+offset_top = 395.0
+offset_right = 295.0
+offset_bottom = 425.0
+theme_override_colors/font_color = Color(0.8, 0.85, 0.95, 1)
+theme_override_font_sizes/font_size = 13
+text = "Stage 1: Pre-Processing\n1 Server • Normal(6, 2.5)"
+
+[node name="LabelMain" type="Label" parent="InfoNode2D" unique_id=1094561135]
+offset_left = 420.0
+offset_top = 290.0
+offset_right = 720.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0.8, 0.85, 0.95, 1)
+theme_override_font_sizes/font_size = 13
+text = "Stage 2: Main Processing\n3 Parallel Servers • Setup: Uni(8,12.5) / 8.0"
+
+[node name="LabelPost" type="Label" parent="InfoNode2D" unique_id=700849366]
+offset_left = 820.0
+offset_top = 300.0
+offset_right = 1110.0
+offset_bottom = 330.0
+theme_override_colors/font_color = Color(0.8, 0.85, 0.95, 1)
+theme_override_font_sizes/font_size = 13
+text = "Stage 3: Post-Processing\n1 Shared Operator • Triangular(6, 16, 10)"
+
+[node name="LabelExit" type="Label" parent="InfoNode2D" unique_id=347748791]
+offset_left = 1085.0
+offset_top = 450.0
+offset_right = 1160.0
+offset_bottom = 475.0
+theme_override_colors/font_color = Color(0.3, 0.85, 0.4, 1)
+theme_override_font_sizes/font_size = 12
+text = "Exit / Done"
+
+[node name="StatusPanel" type="PanelContainer" parent="." unique_id=1827364501]
+offset_left = 1170.0
+offset_top = 80.0
+offset_right = 1576.0
+offset_bottom = 295.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_status")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StatusPanel" unique_id=1827364502]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="StatusPanel/VBoxContainer" unique_id=1827364503]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="StatusPanel/VBoxContainer/MarginContainer" unique_id=1827364504]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="StatusPanel/VBoxContainer/MarginContainer/VBox" unique_id=1827364505]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 14
+text = "SYSTEM MONITOR"
+
+[node name="ClockVal" type="Label" parent="StatusPanel/VBoxContainer" unique_id=1827364506]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "Sim Clock: 0.00 / 100.0"
+
+[node name="WIPVal" type="Label" parent="StatusPanel/VBoxContainer" unique_id=1827364507]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.8, 0.3, 1)
+theme_override_font_sizes/font_size = 12
+text = "Work In Progress (WIP): 0 items"
+
+[node name="PreVal" type="Label" parent="StatusPanel/VBoxContainer" unique_id=1827364508]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.85, 0.95, 1)
+theme_override_font_sizes/font_size = 12
+text = "Stage 1 (Pre):  Queue: 0 | Server: IDLE"
+
+[node name="MainVal" type="Label" parent="StatusPanel/VBoxContainer" unique_id=1827364509]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.85, 0.95, 1)
+theme_override_font_sizes/font_size = 12
+text = "Stage 2 (Main): Queue: 0 | Servers: 0 / 3 Busy"
+
+[node name="PostVal" type="Label" parent="StatusPanel/VBoxContainer" unique_id=1827364510]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.85, 0.95, 1)
+theme_override_font_sizes/font_size = 12
+text = "Stage 3 (Post): Q_A: 0 | Q_B: 0 | Op: IDLE"
+
+[node name="HSeparator" type="HSeparator" parent="StatusPanel/VBoxContainer" unique_id=1827364511]
+layout_mode = 2
+
+[node name="LegendVal" type="Label" parent="StatusPanel/VBoxContainer" unique_id=1827364512]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.75, 0.85, 1)
+theme_override_font_sizes/font_size = 11
+text = "Legend: ● Type A (Amber)   ● Type B (Cyan)"
+
+[node name="LogPanel" type="PanelContainer" parent="." unique_id=1827364520]
+offset_left = 1170.0
+offset_top = 310.0
+offset_right = 1576.0
+offset_bottom = 876.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_log")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LogPanel" unique_id=1827364521]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="LogPanel/VBoxContainer" unique_id=1827364522]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 4
+
+[node name="HBox" type="HBoxContainer" parent="LogPanel/VBoxContainer/MarginContainer" unique_id=1827364523]
+layout_mode = 2
+
+[node name="LogTitle" type="Label" parent="LogPanel/VBoxContainer/MarginContainer/HBox" unique_id=1827364524]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.25, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 14
+text = "SIMULATION EVENT LOG"
+
+[node name="LogRichTextLabel" type="RichTextLabel" parent="LogPanel/VBoxContainer" unique_id=1383020296]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.85, 0.9, 0.95, 1)
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+scroll_following = true
+text = "[color=#94a3b8]Simulation ready. Press Step, Play, or Run.[/color]
+"
+script = ExtResource("6_ygorr")
+
+[connection signal="pressed" from="SimControlBar/ResetButton" to="." method="_on_reset_button"]
+[connection signal="pressed" from="SimControlBar/StepButton" to="." method="_on_step_button"]
+[connection signal="pressed" from="SimControlBar/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="SimControlBar/RunButton" to="." method="_on_run_button"]
+[connection signal="text_submitted" from="SimControlBar/DurationLineEdit" to="." method="_on_duration_line_edit"]
+
+[editable path="SimControlBar"]

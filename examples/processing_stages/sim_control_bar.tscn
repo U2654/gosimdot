@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://d248r4bgc6kan"]
+
+[node name="SimControlBar" type="HBoxContainer" unique_id=1705844063]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 44.0
+grow_horizontal = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="." unique_id=987123456]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 17
+text = "Three Processing Stages (Lang et al. 2021)"
+vertical_alignment = 1
+
+[node name="VSeparator1" type="VSeparator" parent="." unique_id=987123457]
+layout_mode = 2
+
+[node name="ResetButton" type="Button" parent="." unique_id=493372921]
+custom_minimum_size = Vector2(80, 36)
+layout_mode = 2
+text = "↺ Reset"
+
+[node name="StepButton" type="Button" parent="." unique_id=587574820]
+custom_minimum_size = Vector2(80, 36)
+layout_mode = 2
+text = "▶❘ Step"
+
+[node name="PlayButton" type="Button" parent="." unique_id=1849204812]
+custom_minimum_size = Vector2(95, 36)
+layout_mode = 2
+toggle_mode = true
+text = "▶ Play"
+
+[node name="RunButton" type="Button" parent="." unique_id=2142075539]
+custom_minimum_size = Vector2(80, 36)
+layout_mode = 2
+text = "⏭ Run"
+
+[node name="VSeparator2" type="VSeparator" parent="." unique_id=987123458]
+layout_mode = 2
+
+[node name="DurationLabel" type="Label" parent="." unique_id=1702252867]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.75, 0.85, 1)
+text = "Duration:"
+vertical_alignment = 1
+
+[node name="DurationLineEdit" type="LineEdit" parent="." unique_id=1200650630]
+custom_minimum_size = Vector2(80, 36)
+layout_mode = 2
+text = "100"
+alignment = 1
+
+[node name="Spacer" type="Control" parent="." unique_id=987123459]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TimeLabel" type="Label" parent="." unique_id=129614914]
+custom_minimum_size = Vector2(170, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "Clock: 0.00"
+horizontal_alignment = 2
+vertical_alignment = 1

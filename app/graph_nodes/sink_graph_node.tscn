@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cvjwhjy3eist8"]
+
+[ext_resource type="Script" uid="uid://c1ivytny4i054" path="res://app/graph_nodes/sink_graph_node.gd" id="1_wlwpc"]
+[ext_resource type="PackedScene" uid="uid://c6jes465lahmt" path="res://app/graph_nodes/sink_info_window.tscn" id="2_n8sc1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sink_title"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.46, 0.22, 0.64, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[node name="SimGraphNode" type="GraphNode" unique_id=1385364022]
+custom_minimum_size = Vector2(160, 65)
+offset_right = 160.0
+offset_bottom = 65.0
+theme_override_styles/titlebar = SubResource("StyleBoxFlat_sink_title")
+title = "Sink"
+slot/0/left_enabled = true
+slot/0/left_type = 1
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 1
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+script = ExtResource("1_wlwpc")
+info_window_scene = ExtResource("2_n8sc1")
+
+[node name="Label" type="Label" parent="." unique_id=1945344525]
+layout_mode = 2
+text = "Collected: 0"
+horizontal_alignment = 1
+
+[node name="ItemTypeLabel" type="Label" parent="." unique_id=1251766990]
+layout_mode = 2
+text = "Ready"
+horizontal_alignment = 1

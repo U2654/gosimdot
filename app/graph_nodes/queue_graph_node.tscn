@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://co8rm0xjdtie8"]
+
+[ext_resource type="Script" uid="uid://djctyovbhe43x" path="res://app/graph_nodes/queue_graph_node.gd" id="1_r264l"]
+[ext_resource type="PackedScene" uid="uid://b4l2ucvwt3p3c" path="res://app/graph_nodes/queue_info_window.tscn" id="2_1heqm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_queue_title"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.80, 0.42, 0.10, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[node name="SimGraphNode" type="GraphNode" unique_id=1536476860]
+custom_minimum_size = Vector2(160, 65)
+offset_right = 160.0
+offset_bottom = 65.0
+theme_override_styles/titlebar = SubResource("StyleBoxFlat_queue_title")
+title = "Queue Buffer"
+slot/0/left_enabled = true
+slot/0/left_type = 1
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 1
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_r264l")
+info_window_scene = ExtResource("2_1heqm")
+
+[node name="Label" type="Label" parent="." unique_id=644818848]
+layout_mode = 2
+text = "Buffer: Empty"
+horizontal_alignment = 1

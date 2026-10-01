@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://fdrvbgims3x0"]
+
+[ext_resource type="Script" uid="uid://pmx4ffiupgn" path="res://dining_philosophers/animation/dining_philosophers_animation.gd" id="1_isnih"]
+[ext_resource type="PackedScene" uid="uid://baqbpwqccpxnl" path="res://dining_philosophers/animation/philosopher.tscn" id="2_d7m6n"]
+[ext_resource type="PackedScene" uid="uid://cttmcjc5afu48" path="res://dining_philosophers/animation/fork.tscn" id="3_f8ilr"]
+[ext_resource type="Script" uid="uid://boafqrx3j78d0" path="res://dining_philosophers/dining_philosophers.gd" id="4_6r6lt"]
+[ext_resource type="Script" uid="uid://b6xjn8vu0p2je" path="res://addons/gosimdot/core/simulation_manager.gd" id="5_3niae"]
+
+[node name="DiningPhilosophersExample" type="Node2D" unique_id=1801135494]
+scale = Vector2(2, 2)
+script = ExtResource("1_isnih")
+philosopher_scene = ExtResource("2_d7m6n")
+fork_scene = ExtResource("3_f8ilr")
+
+[node name="ResetButton" type="Button" parent="." unique_id=472368681]
+offset_right = 51.0
+offset_bottom = 31.0
+text = "Reset"
+
+[node name="StepButton" type="Button" parent="." unique_id=838518237]
+offset_left = 55.5
+offset_right = 98.5
+offset_bottom = 31.0
+text = "Step"
+
+[node name="RunButton" type="Button" parent="." unique_id=567897158]
+offset_left = 108.0
+offset_right = 147.0
+offset_bottom = 31.0
+text = "Run all"
+
+[node name="MaxStepsLineEdit" type="LineEdit" parent="." unique_id=143221393]
+offset_left = 104.0
+offset_top = 40.0
+offset_right = 172.5
+offset_bottom = 71.0
+text = "20"
+alignment = 2
+
+[node name="MaxStepLabel" type="Label" parent="." unique_id=71083037]
+offset_left = 4.0
+offset_top = 40.0
+offset_right = 78.0
+offset_bottom = 63.0
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
+text = "Duration:"
+
+[node name="TimeLabel" type="Label" parent="." unique_id=2102532333]
+offset_left = 5.0
+offset_top = 74.5
+offset_right = 61.0
+offset_bottom = 97.5
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
+text = "Time: 0"
+
+[node name="DiningPhilosophers" type="Node" parent="." unique_id=220587332]
+script = ExtResource("4_6r6lt")
+N = 7
+
+[node name="SimulationManager" type="Node" parent="DiningPhilosophers" unique_id=1139633976]
+script = ExtResource("5_3niae")
+run_duration = 20.0
+metadata/_custom_type_script = "uid://b6xjn8vu0p2je"
+
+[connection signal="pressed" from="ResetButton" to="DiningPhilosophers" method="reset_simulation"]
+[connection signal="pressed" from="StepButton" to="DiningPhilosophers" method="simulate_step"]
+[connection signal="pressed" from="RunButton" to="." method="run_all"]
+[connection signal="text_submitted" from="MaxStepsLineEdit" to="." method="_on_max_steps_line_edit_text_submitted"]

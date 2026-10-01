@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://c0jl7kdqhoxdx"]
+
+[ext_resource type="Script" uid="uid://bp2wid33fay6r" path="res://app/graph_nodes/resource_graph_node.gd" id="1_nmnn1"]
+[ext_resource type="PackedScene" uid="uid://dqotyu0i7a83i" path="res://app/graph_nodes/resource_info_window.tscn" id="2_hns2x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_resource_title"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.08, 0.48, 0.44, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[node name="DecideGraphNode" type="GraphNode" unique_id=13491828]
+custom_minimum_size = Vector2(160, 65)
+offset_right = 160.0
+offset_bottom = 65.0
+theme_override_styles/titlebar = SubResource("StyleBoxFlat_resource_title")
+title = "Resource Pool"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 3
+slot/0/right_color = Color(0.15, 0.85, 0.65, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_nmnn1")
+info_window_scene = ExtResource("2_hns2x")
+
+[node name="Label" type="Label" parent="." unique_id=2067667285]
+layout_mode = 2
+text = "Pool: 1 (Idle)"
+horizontal_alignment = 1

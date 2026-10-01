@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://baqbpwqccpxnl"]
+
+[ext_resource type="Texture2D" uid="uid://dtyk62ervg02h" path="res://dining_philosophers/animation/philosopher.png" id="1_kmy6o"]
+
+[node name="PhilosopherNode2D" type="Node2D" unique_id=1767734773]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=856538120]
+texture = ExtResource("1_kmy6o")
+
+[node name="Label" type="Label" parent="." unique_id=246008693]
+offset_left = -32.0
+offset_top = 22.0
+offset_right = 32.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "thinking"

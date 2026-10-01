@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bwj4eeqffl7ua"]
+
+[ext_resource type="PackedScene" uid="uid://bjj8l13smcd6v" path="res://app/graph_nodes/distribution_gridcontainer.tscn" id="1_dc2mk"]
+
+[node name="InfoWindow" type="Window" unique_id=162266706]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+size = Vector2i(380, 420)
+min_size = Vector2i(340, 360)
+
+[node name="DistributionGridContainer" parent="." unique_id=1869811998 instance=ExtResource("1_dc2mk")]
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://c6jes465lahmt"]
+
+[ext_resource type="Script" uid="uid://dd22p5f06td0l" path="res://app/graph_nodes/sink_info_window.gd" id="1_b8hia"]
+
+[node name="InfoWindow" type="Window" unique_id=112158056]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+size = Vector2i(460, 420)
+min_size = Vector2i(380, 340)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=3001]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=3002]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HeaderLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=3003]
+layout_mode = 2
+text = "Sink Lifetime Performance"
+
+[node name="SummaryCard" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=3004]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/SummaryCard" unique_id=3005]
+layout_mode = 2
+columns = 4
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 4
+
+[node name="CountTitle" type="Label" parent="MarginContainer/VBoxContainer/SummaryCard/GridContainer" unique_id=3006]
+layout_mode = 2
+text = "Total:"
+
+[node name="CountValue" type="Label" parent="MarginContainer/VBoxContainer/SummaryCard/GridContainer" unique_id=3007]
+layout_mode = 2
+text = "0 items"
+
+[node name="MeanTitle" type="Label" parent="MarginContainer/VBoxContainer/SummaryCard/GridContainer" unique_id=3008]
+layout_mode = 2
+text = "Average:"
+
+[node name="MeanValue" type="Label" parent="MarginContainer/VBoxContainer/SummaryCard/GridContainer" unique_id=3009]
+layout_mode = 2
+text = "0.00 s"
+
+[node name="MinTitle" type="Label" parent="MarginContainer/VBoxContainer/SummaryCard/GridContainer" unique_id=3010]
+layout_mode = 2
+text = "Min:"
+
+[node name="MinValue" type="Label" parent="MarginContainer/VBoxContainer/SummaryCard/GridContainer" unique_id=3011]
+layout_mode = 2
+text = "0.00 s"
+
+[node name="MaxTitle" type="Label" parent="MarginContainer/VBoxContainer/SummaryCard/GridContainer" unique_id=3012]
+layout_mode = 2
+text = "Max:"
+
+[node name="MaxValue" type="Label" parent="MarginContainer/VBoxContainer/SummaryCard/GridContainer" unique_id=3013]
+layout_mode = 2
+text = "0.00 s"
+
+[node name="ChartCard" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=3014]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ChartCard" unique_id=3015]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ChartTitle" type="Label" parent="MarginContainer/VBoxContainer/ChartCard/VBoxContainer" unique_id=3016]
+layout_mode = 2
+text = "Entity Lifetime Histogram (16 Bins):"
+
+[node name="Histogram" type="Control" parent="MarginContainer/VBoxContainer/ChartCard/VBoxContainer" unique_id=1918524382]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("1_b8hia")
+
+[node name="FooterHBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=3017]
+layout_mode = 2
+
+[node name="InfoLabel" type="Label" parent="MarginContainer/VBoxContainer/FooterHBox" unique_id=1877158811]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Ready to collect simulation data"

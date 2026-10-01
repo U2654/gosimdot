@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dcmxaouwgowdt"]
+
+[ext_resource type="Script" uid="uid://d0i7jyi3s4a1m" path="res://app/graph_nodes/delay_graph_node.gd" id="1_kqkn4"]
+[ext_resource type="PackedScene" uid="uid://bwj4eeqffl7ua" path="res://app/graph_nodes/delay_info_window.tscn" id="2_kqkn4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_delay_title"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.14, 0.40, 0.72, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[node name="SimGraphNode" type="GraphNode" unique_id=1536476860]
+custom_minimum_size = Vector2(160, 65)
+offset_right = 160.0
+offset_bottom = 65.0
+theme_override_styles/titlebar = SubResource("StyleBoxFlat_delay_title")
+title = "Delay Server"
+slot/0/left_enabled = true
+slot/0/left_type = 1
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 1
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = true
+slot/1/left_type = 2
+slot/1/left_color = Color(0.35, 0.45, 0.95, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+slot/2/left_enabled = true
+slot/2/left_type = 3
+slot/2/left_color = Color(0.15, 0.85, 0.65, 1)
+slot/2/left_icon = null
+slot/2/right_enabled = false
+slot/2/right_type = 0
+slot/2/right_color = Color(1, 1, 1, 1)
+slot/2/right_icon = null
+slot/2/draw_stylebox = true
+script = ExtResource("1_kqkn4")
+info_window_scene = ExtResource("2_kqkn4")
+
+[node name="Label" type="Label" parent="." unique_id=363208815]
+layout_mode = 2
+text = "Status: Idle"
+horizontal_alignment = 1
+
+[node name="ResourceLabel" type="Label" parent="." unique_id=590355035]
+layout_mode = 2
+
+[node name="DecideLabel" type="Label" parent="." unique_id=1032610015]
+layout_mode = 2
+horizontal_alignment = 1

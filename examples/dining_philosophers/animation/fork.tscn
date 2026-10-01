@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cttmcjc5afu48"]
+
+[ext_resource type="Texture2D" uid="uid://dkqpoeolykfgf" path="res://dining_philosophers/animation/fork.png" id="1_dores"]
+
+[node name="Fork2D" type="Node2D" unique_id=1651482775]
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1883221746]
+z_index = -10
+width = 5.0
+default_color = Color(0.5460782, 0.61303747, 0.89342403, 1)
+
+[node name="Label" type="Label" parent="." unique_id=118345776]
+offset_left = -19.0
+offset_top = 12.0
+offset_right = 21.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "x"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=495289634]
+position = Vector2(1, 4)
+texture = ExtResource("1_dores")
