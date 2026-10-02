@@ -3,15 +3,15 @@ extends SimulationEntity
 
 @export var capacity: float = 0.0
 
-# the current love how full is the container
-# a change might trigger a c condition echck
+# the current level of the container
+# a change might trigger a c condition check
 var level: float = 0.0:
 	set(value):
 		if level != value:
 			level = value
 			state_changed.emit() 
 
-func _init(cap: float, lev: float):
+func _init(cap: float = 100.0, lev: float = 0.0):
 	super._init()
 	capacity = cap
 	level = lev	

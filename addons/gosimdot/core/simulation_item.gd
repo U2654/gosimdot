@@ -6,6 +6,6 @@ var properties: Dictionary = {}
 
 var time_created : float = 0.0
 
-func _init(t: float):
+func _init(t: float = 0.0):
 	super()
 	self.time_created = t

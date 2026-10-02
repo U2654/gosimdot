@@ -1,5 +1,4 @@
 # time_distributions.gd
-# AI generated code
 class_name TimeDistribution
 extends RefCounted
 
@@ -21,7 +20,9 @@ class Exponential extends TimeDistribution:
 	func _init(p_lambda: float):
 		lambda_val = p_lambda
 	func get_interval() -> float:
-		return -log(1.0 - randf()) / lambda_val
+		if lambda_val <= 0.0:
+			return 0.0
+		return -log(maxf(1.0 - randf(), 0.00001)) / lambda_val
 
 # Uniform Random (min to max)
 class Uniform extends TimeDistribution:
@@ -47,6 +48,8 @@ class Triangular extends TimeDistribution:
 		c = clamp(c, a, b)
 
 	func get_interval() -> float:
+		if b <= a:
+			return a
 		var u = randf() # Random value between 0.0 and 1.0
 		var fc = (c - a) / (b - a)
 		
@@ -55,7 +58,7 @@ class Triangular extends TimeDistribution:
 			return a + sqrt(u * (b - a) * (c - a))
 		else:
 			# Right side of the peak
-			return b - sqrt((1 - u) * (b - a) * (b - c))
+			return b - sqrt((1.0 - u) * (b - a) * (b - c))
 			
 			
 # Normal (Gaussian) Distribution
@@ -72,10 +75,10 @@ class Normal extends TimeDistribution:
 		var u2 = randf()
 		
 		# Box-Muller transform for standard normal distribution (Z ~ N(0, 1))
-		# Use max() to avoid log(0) which results in NaN
-		var z0 = sqrt(-2.0 * log(max(u1, 0.00001))) * cos(2.0 * PI * u2)
+		# Use maxf() to avoid log(0) which results in NaN
+		var z0 = sqrt(-2.0 * log(maxf(u1, 0.00001))) * cos(2.0 * PI * u2)
 		
-		return max(mu + sigma * z0, 0)
+		return maxf(mu + sigma * z0, 0.0)
 		
 		
 ## Static Factory Method

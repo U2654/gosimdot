@@ -21,11 +21,17 @@ class ProbablisticDecider extends Decider:
 		
 		var cumulative := 0.0
 		var r := randf()
+		var last_option: Variant = null
 		for o in options:
+			last_option = o
 			cumulative += options[o]
-			if (r < cumulative):
+			if r < cumulative:
 				return o
-		return null
+		return last_option
+
+# Alias for standard spelling
+class ProbabilisticDecider extends ProbablisticDecider:
+	pass
 	
 
 #class DeterministicDecider extends Decider:
