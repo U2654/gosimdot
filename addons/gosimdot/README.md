@@ -79,6 +79,19 @@ sim.simulate()
 
 ---
 
+## Examples & Demo Project
+
+To explore full interactive visual examples, sample scenes, and the node-based network editor prototype, clone the complete repository from GitHub:
+👉 **[https://github.com/U2654/gosimdot](https://github.com/U2654/gosimdot)**
+
+Included in the repo:
+* **Booking Clerk Model** (`examples/booking_clerk/`): Priority queues and shared service clerk resource.
+* **Dining Philosophers** (`examples/dining_philosophers/`): Resource contention with real-time analytics plotting.
+* **Processing Stages** (`examples/processing_stages/`): Multi-stage manufacturing flow with 2D visual stages.
+* **Visual Network Flow Editor** (`app/`): Drag-and-drop `GraphEdit` network designer.
+
+---
+
 ## License
 
 MIT License. See [LICENSE](LICENSE) for details.
