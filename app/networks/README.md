@@ -13,6 +13,7 @@ This directory contains serialized node-based network models in JSON format, des
 | **`router_3way.json`** | 3-Way Routing Classifier | `Source` (classified into Types A, B, C via `SourceDecide`) $\rightarrow$ `Queue` $\rightarrow$ `RouteNode` (split 3 ways by `RouteDecide`) $\rightarrow$ 3 dedicated Sinks. |
 | **`parallel_servers.json`** | Dual Parallel Server Bank | Single queue distributing jobs to two parallel delay stations (`RouteNode` allocating to the first available server) $\rightarrow$ Sinks. |
 | **`typed_service_delay.json`** | Type-Dependent Service Time Queue | Single queue with typed service: `SourceDecide` (A/B tags) $\rightarrow$ `Queue` $\rightarrow$ `Delay` with `DelayDecide` applying different service distributions depending on item type $\rightarrow$ `Sink`. |
+| **`bank_teller.json`** | Bank Teller Tutorial (Branching M/G/1 + M/G/4) | Poisson arrivals ($\lambda=0.3$) split 50/50 $\rightarrow$ Branch 1 (M/G/1 with Triangular service) and Branch 2 (M/G/4 with 4 shared teller resources and Triangular service) $\rightarrow$ Exit. |
 
 ## How to Load and Save
 

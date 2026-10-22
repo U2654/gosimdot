@@ -1,6 +1,10 @@
 extends MenuBar
 
 const NETWORKS_DIR := "res://app/networks/"
+const ABOUT_DIALOG_SCENE := preload("res://app/gui/about_dialog.tscn")
+
+var about_dialog: AcceptDialog = null
+var current_file_path: String = ""
 
 const EXAMPLES := [
 	{"name": "Parallel Servers", "path": "res://app/networks/parallel_servers.json"},
@@ -9,24 +13,42 @@ const EXAMPLES := [
 	{"name": "Three Processing Stages", "path": "res://app/networks/three_processing_stages.json"},
 	{"name": "Resource Pool Demo", "path": "res://app/networks/resource.json"},
 	{"name": "Typed Service Delay", "path": "res://app/networks/typed_service_delay.json"},
-	{"name": "Demo Network", "path": "res://app/networks/demo.json"}
+	{"name": "Demo Network", "path": "res://app/networks/demo.json"},
+	{"name": "Bank Teller", "path": "res://app/networks/bank_teller.json"}
 ]
 
 func _ready() -> void:
-	pass
+	var em = find_child("ExamplesMenu", true, false)
+	if em and em is PopupMenu:
+		em.clear()
+		for i in range(EXAMPLES.size()):
+			em.add_item(EXAMPLES[i]["name"], i)
+
+func _on_gosimdot_menu_id_pressed(id: int) -> void:
+	match id:
+		1:
+			show_about_dialog()
+		2:
+			get_tree().quit()
 
 func _on_file_menu_id_pressed(id: int) -> void:
 	match id:
-		0:
-			get_tree().quit()
 		1:
 			new_file()
 		2:
 			load_file()
 		3:
 			save_file()
+		4:
+			save_file_as()
 		_:
 			pass
+
+func show_about_dialog() -> void:
+	if not about_dialog:
+		about_dialog = ABOUT_DIALOG_SCENE.instantiate()
+		add_child(about_dialog)
+	about_dialog.popup_centered()
 
 func _on_examples_menu_id_pressed(id: int) -> void:
 	if id >= 0 and id < EXAMPLES.size():
@@ -46,6 +68,7 @@ func _on_view_menu_id_pressed(id: int) -> void:
 			ge.clear_connections()
 
 func new_file():
+	current_file_path = ""
 	clear_graph()
 
 func load_file():
@@ -56,10 +79,16 @@ func load_file():
 	fd.popup_centered()
 	
 func save_file():
+	if current_file_path != "":
+		save_graph(current_file_path)
+	else:
+		save_file_as()
+
+func save_file_as():
 	var fd = get_parent().find_child("FileDialog")
 	fd.file_mode = FileDialog.FILE_MODE_SAVE_FILE
 	fd.current_dir = NETWORKS_DIR
-	fd.title = "Save your Graph"
+	fd.title = "Save your Graph As..."
 	fd.popup_centered()
 	
 func _on_file_dialog_file_selected(path: String):
@@ -108,14 +137,20 @@ func clear_graph():
 	
 func load_graph(path: String):
 	if not FileAccess.file_exists(path):
+		push_warning("File does not exist: %s" % path)
 		return
 
 	var file = FileAccess.open(path, FileAccess.READ)
+	if not file:
+		push_error("Failed to open file for reading: %s (error: %d)" % [path, FileAccess.get_open_error()])
+		return
 	var json_string = file.get_as_text()
 	var data = JSON.parse_string(json_string)
 
 	if data == null:
 		return
+
+	current_file_path = path
 
 	await clear_graph()
 	var ge = get_parent().find_child("GraphEdit")
@@ -176,4 +211,8 @@ func save_graph(path: String):
 			data["nodes"].append(node_info)
    
 	var file = FileAccess.open(path, FileAccess.WRITE)
-	file.store_string(JSON.stringify(data))
+	if file:
+		file.store_string(JSON.stringify(data))
+		current_file_path = path
+	else:
+		push_error("Failed to open file for writing: %s (error: %d)" % [path, FileAccess.get_open_error()])

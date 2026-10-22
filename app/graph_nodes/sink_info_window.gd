@@ -6,10 +6,19 @@ var min_val: float = 0.0
 var max_val: float = 0.0
 var mean_val: float = 0.0
 
-@onready var count_label: Label = get_node_or_null("../../SummaryCard/GridContainer/CountValue")
-@onready var mean_label: Label = get_node_or_null("../../SummaryCard/GridContainer/MeanValue")
-@onready var min_label: Label = get_node_or_null("../../SummaryCard/GridContainer/MinValue")
-@onready var max_label: Label = get_node_or_null("../../SummaryCard/GridContainer/MaxValue")
+@onready var count_label: Label = get_node_or_null("../../../SummaryCard/GridContainer/CountValue")
+@onready var mean_label: Label = get_node_or_null("../../../SummaryCard/GridContainer/MeanValue")
+@onready var min_label: Label = get_node_or_null("../../../SummaryCard/GridContainer/MinValue")
+@onready var max_label: Label = get_node_or_null("../../../SummaryCard/GridContainer/MaxValue")
+
+func _resolve_labels() -> void:
+	if count_label == null or not is_instance_valid(count_label):
+		var w := get_window()
+		if w:
+			count_label = w.find_child("CountValue", true, false)
+			mean_label = w.find_child("MeanValue", true, false)
+			min_label = w.find_child("MinValue", true, false)
+			max_label = w.find_child("MaxValue", true, false)
 
 func _ready() -> void:
 	pass
@@ -55,6 +64,7 @@ func prepare_histogram_data(values: Array, bin_count: int) -> void:
 	queue_redraw()
 
 func _update_summary_labels(count: int, mean: float, mn: float, mx: float) -> void:
+	_resolve_labels()
 	if count_label:
 		count_label.text = "%d items" % count
 	if mean_label:

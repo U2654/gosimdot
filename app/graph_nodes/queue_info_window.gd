@@ -2,6 +2,8 @@ extends Window
 
 @onready var count_value: Label = $MarginContainer/VBoxContainer/MetricsCard/VBoxContainer/GridContainer/CountValue
 @onready var peak_value: Label = $MarginContainer/VBoxContainer/MetricsCard/VBoxContainer/GridContainer/PeakValue
+@onready var avg_value: Label = $MarginContainer/VBoxContainer/MetricsCard/VBoxContainer/GridContainer/AvgValue
+@onready var avg_wait_value: Label = $MarginContainer/VBoxContainer/MetricsCard/VBoxContainer/GridContainer/AvgWaitValue
 @onready var enqueued_value: Label = $MarginContainer/VBoxContainer/MetricsCard/VBoxContainer/GridContainer/EnqueuedValue
 @onready var dequeued_value: Label = $MarginContainer/VBoxContainer/MetricsCard/VBoxContainer/GridContainer/DequeuedValue
 @onready var progress_bar: ProgressBar = $MarginContainer/VBoxContainer/MetricsCard/VBoxContainer/ProgressBar
@@ -19,11 +21,17 @@ func _ready() -> void:
 		items_tree.create_item()
 		items_tree.hide_root = true
 
-func update_stats(current_count: int, peak_count: int, total_enqueued: int, total_dequeued: int, items: Array) -> void:
+func update_stats(current_count: int, peak_count: int, total_enqueued: int, total_dequeued: int, items: Array, avg_count: float = 0.0, avg_wait: float = 0.0) -> void:
+	if not avg_wait_value:
+		avg_wait_value = find_child("AvgWaitValue", true, false)
 	if count_value:
 		count_value.text = str(current_count)
 	if peak_value:
 		peak_value.text = str(peak_count)
+	if avg_value:
+		avg_value.text = "%.2f" % avg_count
+	if avg_wait_value:
+		avg_wait_value.text = "%.2f s" % avg_wait
 	if enqueued_value:
 		enqueued_value.text = str(total_enqueued)
 	if dequeued_value:

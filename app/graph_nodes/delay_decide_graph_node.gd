@@ -51,11 +51,11 @@ func update_assignments(items):
 		if td_string == "":
 			return
 		var parts = td_string.split(",")
-		var name = parts[0].strip_edges()
+		var td_name = parts[0].strip_edges()
 		var parameters = []
 		for i in range(1, parts.size()):
 			parameters.append(parts[i].strip_edges().to_float())
-		assign_distribution(item, name, parameters)
+		assign_distribution(item, td_name, parameters)
 
 func reset():
 	last_type = null

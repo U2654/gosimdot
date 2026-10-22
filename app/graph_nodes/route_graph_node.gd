@@ -11,7 +11,7 @@ var blocked : Array[bool] = [false, false, false, false]
 func _init():
 	informs_input = true
 
-func on_input_ready(other_node: SimGraphNode, other_port: int, own_port : int):
+func on_input_ready(other_node: SimGraphNode, other_port: int, _own_port : int):
 	# first check if we can take the item
 	var can_take = false
 	for i in range(blocked.size()):
@@ -46,7 +46,7 @@ func check_output(port: int) -> bool:
 	return not blocked[port] and not output_ready[port].get_connections().is_empty()
 
 		
-func on_output_ready(other_node: SimGraphNode, other_port: int, own_port : int):
+func on_output_ready(_other_node: SimGraphNode, _other_port: int, own_port : int):
 	blocked[own_port] = false
 	input_ready[0].emit(self, 0)
 
@@ -68,7 +68,7 @@ var decide_node = null
 func attach_decide(dec):
 	decide_node = dec
 
-func detach_decide(dec):
+func detach_decide(_dec):
 	decide_node = null
 		
 ### serialize stuff

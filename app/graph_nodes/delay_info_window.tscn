@@ -1,22 +1,89 @@
 [gd_scene format=3 uid="uid://bwj4eeqffl7ua"]
 
-[ext_resource type="PackedScene" uid="uid://bjj8l13smcd6v" path="res://app/graph_nodes/distribution_gridcontainer.tscn" id="1_dc2mk"]
+[ext_resource type="Script" path="res://app/graph_nodes/delay_info_window.gd" id="1_delay_info"]
+[ext_resource type="PackedScene" uid="uid://bjj8l13smcd6v" path="res://app/graph_nodes/distribution_gridcontainer.tscn" id="2_dc2mk"]
 
 [node name="InfoWindow" type="Window" unique_id=162266706]
 oversampling_override = 1.0
 position = Vector2i(0, 36)
-size = Vector2i(380, 420)
-min_size = Vector2i(340, 360)
+size = Vector2i(420, 560)
+min_size = Vector2i(380, 480)
+script = ExtResource("1_delay_info")
 
-[node name="DistributionGridContainer" parent="." unique_id=1869811998 instance=ExtResource("1_dc2mk")]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=4001]
 anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=4002]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HeaderLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=4003]
+layout_mode = 2
+text = "Delay (Server) Inspector"
+
+[node name="PerformanceCard" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=4004]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PerformanceCard" unique_id=4005]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/PerformanceCard/VBoxContainer" unique_id=4006]
+layout_mode = 2
+columns = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 4
+
+[node name="StatusTitle" type="Label" parent="MarginContainer/VBoxContainer/PerformanceCard/VBoxContainer/GridContainer" unique_id=4007]
+layout_mode = 2
+text = "Status:"
+
+[node name="StatusValue" type="Label" parent="MarginContainer/VBoxContainer/PerformanceCard/VBoxContainer/GridContainer" unique_id=4008]
+layout_mode = 2
+text = "Idle"
+
+[node name="UtilTitle" type="Label" parent="MarginContainer/VBoxContainer/PerformanceCard/VBoxContainer/GridContainer" unique_id=4009]
+layout_mode = 2
+text = "Utilisation:"
+
+[node name="UtilValue" type="Label" parent="MarginContainer/VBoxContainer/PerformanceCard/VBoxContainer/GridContainer" unique_id=4010]
+layout_mode = 2
+text = "0.0 %"
+
+[node name="ProcessedTitle" type="Label" parent="MarginContainer/VBoxContainer/PerformanceCard/VBoxContainer/GridContainer" unique_id=4011]
+layout_mode = 2
+text = "Total Processed:"
+
+[node name="ProcessedValue" type="Label" parent="MarginContainer/VBoxContainer/PerformanceCard/VBoxContainer/GridContainer" unique_id=4012]
+layout_mode = 2
+text = "0 items"
+
+[node name="AvgServiceTitle" type="Label" parent="MarginContainer/VBoxContainer/PerformanceCard/VBoxContainer/GridContainer" unique_id=4013]
+layout_mode = 2
+text = "Avg Service Time:"
+
+[node name="AvgServiceValue" type="Label" parent="MarginContainer/VBoxContainer/PerformanceCard/VBoxContainer/GridContainer" unique_id=4014]
+layout_mode = 2
+text = "0.00 s"
+
+[node name="UtilProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/PerformanceCard/VBoxContainer" unique_id=4015]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+max_value = 100.0
+value = 0.0
+
+[node name="DistributionSectionTitle" type="Label" parent="MarginContainer/VBoxContainer" unique_id=4016]
+layout_mode = 2
+text = "Service Time Configuration"
+
+[node name="DistributionGridContainer" parent="MarginContainer/VBoxContainer" unique_id=1869811998 instance=ExtResource("2_dc2mk")]
+layout_mode = 2
+size_flags_vertical = 3

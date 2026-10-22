@@ -56,7 +56,7 @@ var decide_node = null
 func attach_decide(dec):
 	decide_node = dec
 
-func detach_decide(dec):
+func detach_decide(_dec):
 	decide_node = null
 	
 ### serialize stuff

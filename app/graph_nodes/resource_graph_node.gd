@@ -10,6 +10,7 @@ func _ready():
 	super._ready()
 	var sb = info_window.find_child("CapacitySpinBox", true, false)
 	if sb:
+		sb.value = resource.capacity
 		sb.value_changed.connect(change_capacity)
 	_update_info_ui()
 
@@ -45,6 +46,23 @@ func release(_entity):
 func reset():
 	resource.reset()
 	_update_info_ui()
+
+### serialize stuff
+func get_save_data() -> Variant:
+	return {
+		"capacity": resource.capacity
+	}
+
+func set_load_data(data: Variant):
+	if data is Dictionary and data.has("capacity"):
+		resource.capacity = int(data["capacity"])
+	elif typeof(data) == TYPE_INT or typeof(data) == TYPE_FLOAT:
+		resource.capacity = int(data)
+	if info_window:
+		var sb = info_window.find_child("CapacitySpinBox", true, false)
+		if sb:
+			sb.value = resource.capacity
+	_update_info_ui()
 		
 # inner class for c-condition to have all in one file 
 class DeciderCCondition extends SimulationCCondition:
@@ -62,10 +80,13 @@ class DeciderCCondition extends SimulationCCondition:
 
 	# trigger execution if server is available and customer in the queue
 	func is_true() -> bool:
-		#print(_input_check, " CHECK ", _input_check.available)
+		var target = _callback.get_object()
+		if target and ("waiting" in target) and target.waiting:
+			return false
+		if target and ("item" in target) and target.item != null:
+			return false
 		if _input_check.available:
 			if _parent.resource.is_available(_input_check):
-				#print(_input_check, " CHECK and RESOURCE availabe" )
 				return true
 		return false
 

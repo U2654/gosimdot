@@ -63,6 +63,22 @@ text = "Peak Queue Length:"
 layout_mode = 2
 text = "0"
 
+[node name="AvgTitle" type="Label" parent="MarginContainer/VBoxContainer/MetricsCard/VBoxContainer/GridContainer" unique_id=2017]
+layout_mode = 2
+text = "Average Queue Length:"
+
+[node name="AvgValue" type="Label" parent="MarginContainer/VBoxContainer/MetricsCard/VBoxContainer/GridContainer" unique_id=2018]
+layout_mode = 2
+text = "0.00"
+
+[node name="AvgWaitTitle" type="Label" parent="MarginContainer/VBoxContainer/MetricsCard/VBoxContainer/GridContainer" unique_id=2019]
+layout_mode = 2
+text = "Average Waiting Time:"
+
+[node name="AvgWaitValue" type="Label" parent="MarginContainer/VBoxContainer/MetricsCard/VBoxContainer/GridContainer" unique_id=2020]
+layout_mode = 2
+text = "0.00 s"
+
 [node name="EnqueuedTitle" type="Label" parent="MarginContainer/VBoxContainer/MetricsCard/VBoxContainer/GridContainer" unique_id=2011]
 layout_mode = 2
 text = "Total Enqueued:"
