@@ -70,7 +70,7 @@ func attach_decide(dec):
 
 func detach_decide(_dec):
 	decide_node = null
-		
+	
 ### serialize stuff
 func get_save_data() -> Variant:
 	var data = {}
@@ -81,6 +81,12 @@ func get_save_data() -> Variant:
 func set_load_data(data: Variant):
 	if data == null or not (data is Dictionary):
 		return
+	var count = 2
 	for key in data.keys():
-		if has_node(key):
-			get_node(key).visible = data[key]
+		get_node(key).visible = data[key]
+		if data[key] == true:
+			count += 1
+
+	var sb = info_window.find_child("OutputNumberSpinBox", true, false)
+	if sb:
+		sb.value = count
